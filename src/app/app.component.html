@@ -1,0 +1,98 @@
+<h1 style="text-align: center;"
+    class="my_padding">NGXS CRUD
+</h1>
+
+<!-- BOOTSTRAP GRID -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+      <h3>CRUD Operations:</h3>
+
+      <!-- CREATE -->
+      <div class="input-group my_padding">
+        <div class="input-group-prepend">
+          <button (click)="create()"
+                  class="btn btn-outline-primary"
+                  type="button">Create</button>
+        </div>
+        <input type="text"
+               class="form-control"
+               placeholder="Name to add"
+               required
+               [(ngModel)]="createName">
+      </div>
+
+      <!-- READ -->
+      <div class="input-group my_padding">
+        <div class="input-group-prepend">
+          <button (click)="read()"
+                  class="btn btn-outline-primary">
+            Read
+          </button>
+        </div>
+
+        <input type="number"
+               [(ngModel)]="readIndex"
+               placeholder="Index to read"
+               class="form-control">
+      </div>
+
+      <!-- UPDATE -->
+      <div class="input-group my_padding">
+        <div class="input-group-prepend">
+          <button (click)="update()"
+                  class="btn btn-outline-primary">
+            Update
+          </button>
+        </div>
+        <input type="text"
+               [(ngModel)]="updateName"
+               placeholder="New Name"
+               class="form-control">
+        <input type="number"
+               [(ngModel)]="updateIndex"
+               placeholder="index"
+               class="form-control">
+      </div>
+
+      <!-- DELETE -->
+      <div class="input-group my_padding">
+        <div class="input-group-prepend">
+          <button (click)="delete()"
+                  class="btn btn-outline-primary">
+            Delete
+          </button>
+        </div>
+        <input type="number"
+               [(ngModel)]="deleteIndex"
+               placeholder="Deletion index"
+               class="form-control">
+      </div>
+
+      <!-- READ VALUE -->
+      <p class="my_padding">Component read value: {{ this.readValue }}</p>
+      <p class="my_padding">NGXS read value: {{ this.readValueFromNGXS }}</p>
+    </div>
+    <div class="col-sm">
+
+      <h3>Component Store:</h3>
+
+      <!-- STORE DISPLAY -->
+      <div class="name_container my_padding"
+           *ngFor="let name of this.namesStore; let i = index">
+        {{i}} - {{ name }}
+      </div>
+
+    </div>
+    <div class="col-sm">
+      <h3>NGXS Store:</h3>
+
+      <!-- STORE DISPLAY -->
+      <div class="name_container my_padding"
+           *ngFor="let name of this.store.snapshot().namesStore.names; let i = index">
+        {{i}} - {{ name }}
+      </div>
+    </div>
+  </div>
+</div>
